@@ -23,7 +23,7 @@ class PaymentTypeRepository
         $query->execute([
             ':id' => $id
         ]);
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getAll()

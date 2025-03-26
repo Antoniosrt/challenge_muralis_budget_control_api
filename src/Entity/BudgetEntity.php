@@ -1,20 +1,27 @@
 <?php
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class BudgetEntity
 {
 
     private ?int $id;
-
+    #[Assert\NotBlank]
     private ?string $purchase_date;
+    #[Assert\NotBlank]
 
     private ?int $amount;
+    #[Assert\NotBlank]
 
     private ?string $description;
+    #[Assert\NotBlank]
 
     private ?int $address_id;
+    #[Assert\NotBlank]
 
     private ?int $category_id;
+    #[Assert\NotBlank]
 
     private ?int $payment_type_id;
 

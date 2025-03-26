@@ -17,12 +17,12 @@ class PaymentTypeController extends AbstractController
     {
     }
 
-    #[Route('/payment_types', methods: ['GET'])]
+    #[Route('/payment_type', methods: ['GET'])]
     public function list()
     {
         try {
             $data = $this->paymentTypeService->get_all_payment_types();
-            return $this->json($data,200);
+            return $this->json(['success'=>true,'data'=> $data],200);
         }catch (\Exception $exception){
             return $this->json(['error' => $exception->getMessage()], 400);
         }

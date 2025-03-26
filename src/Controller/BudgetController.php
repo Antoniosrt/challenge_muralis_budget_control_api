@@ -16,31 +16,52 @@ class BudgetController extends AbstractController
         $this->budgetService = $budgetService;
     }
     #[Route('/despesas', methods: ['GET', 'HEAD'])]
-    public function show(): JsonResponse
+    public function show(Request $request): JsonResponse
     {
-        return $this->json([
-            'message' => 'Hello, Symfony 7 API!',
-            'timestamp' => time()
-        ]);
+        try {
+
+            return $this->json($this->budgetService->get_all_budgets($request));
+        }catch (\Exception $exception){
+            return $this->json(['error' => $exception->getMessage(),'success'=>false], 400);
+        }
     }
 
-    #[Route('/despesas', methods: ['PUT'])]
+    #[Route('/despesas/{id}', methods: ['GET'])]
+    public function view(int $id,Request $request): JsonResponse
+    {
+        try {
+            return $this->json($this->budgetService->get_budget_by_id($id));
+        }catch (\Exception $exception){
+            return $this->json(['error' => $exception->getMessage(),'success'=>false], 400);
+        }
+    }
+    #[Route('/despesas/{id}', methods: ['PUT'])]
     public function edit(int $id,Request $request): JsonResponse
     {
         try {
-            return $this->budgetService->update_budget($id,$request);
+            $data = json_decode($request->getContent(), true);
+            return $this->json($this->budgetService->update_budget($id,$data));
         }catch (\Exception $exception){
             return $this->json(['error' => $exception->getMessage(),'success'=>false], 400);
         }
     }
 
     #[Route('/despesas',methods: ['POST'])]
-    public function new(Request $request): JsonResponse
+    public function create(Request $request): JsonResponse
     {
         $response = $this->budgetService->create_new_budget($request);
         return $this->json($response);
     }
 
-    
+    #[Route('/despesas/{id}', methods: ['DELETE'])]
+    public function delete($id): JsonResponse
+    {
+        try {
+            $deleteBudget = $this->budgetService->delete_budget($id);
+            return $this->json($deleteBudget);
+        }catch (\Exception $exception){
+            return $this->json(['error' => $exception->getMessage(),'success'=>false], 400);
+        }
+    }
 
 }

@@ -32,9 +32,8 @@ class EntityFactory
                 foreach ($errors as $error) {
                     $errorMessages[$error->getPropertyPath()] = $error->getMessage();
                 }
-                return new JsonResponse(['errors' => $errorMessages], 400);
+                return $errorMessages;
             }
-
             return $entity;
 
         } catch (\Exception $e) {

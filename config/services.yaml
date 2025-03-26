@@ -33,11 +33,11 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    App\Service\DatabaseService:
-        arguments:
-            $dsn: '%env(DATABASE_DSN)%'
-            $user: '%env(DATABASE_USER)%'
-            $pass: '%env(DATABASE_PASS)%'
+#    App\Service\DatabaseService:
+#        arguments:
+#            $dsn: '%env(DATABASE_DSN)%'
+#            $user: '%env(DATABASE_USER)%'
+#            $pass: '%env(DATABASE_PASS)%'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
