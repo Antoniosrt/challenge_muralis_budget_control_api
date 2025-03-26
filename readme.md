@@ -23,7 +23,7 @@ Antes de rodar o projeto, certifique-se de ter as seguintes ferramentas instalad
 Primeiro, clone o repositório para a sua máquina local. Execute o seguinte comando:
 
 ```bash
-git clone <URL_do_repositório>
+git clone git@github.com:Antoniosrt/challenge_muralis_budget_control_api.git
 ```
 
 Substitua `<URL_do_repositório>` pela URL do repositório desejado.
@@ -33,7 +33,7 @@ Substitua `<URL_do_repositório>` pela URL do repositório desejado.
 Após clonar o repositório, navegue até o diretório do projeto:
 
 ```bash
-cd <diretório_do_repositório>
+cd challenge_muralis_budget_control_api
 ```
 
 Em seguida, instale as dependências do projeto utilizando o Composer:
